@@ -10,3 +10,30 @@
 // A word wins if its value is greater than the opposing word's value.
 // The team with more winning words is the winner.
 // Return "We win" if your team is the winner, "We lose" if your team loses, and "Draw" if both teams have the same number of wins.
+
+function battle(ourTeam, opponent) {
+  console.log(ourTeam, opponent);
+
+  // define ref string
+  const refString = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  console.log(refString.length);
+
+  // define helper function to count words
+  function getWord(word) {
+    let counter = 0;
+    word.forEach((letter) => {
+      counter += refString.indexOf(letter);
+    });
+    return counter;
+  }
+  // split sentences to arrays
+  const teamArr = ourTeam.split(' ');
+  const oppArr = opponent.split(' ');
+
+  const teamScores = teamArr.map((x) => getWord(x));
+  console.log(teamScores);
+  const oppScores = oppArr.map((x) => getWord(x));
+  console.log(oppScores);
+  // return ourTeam;
+}
