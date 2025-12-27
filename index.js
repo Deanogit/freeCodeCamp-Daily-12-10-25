@@ -42,4 +42,26 @@ function battle(ourTeam, opponent) {
   const oppScores = oppArr.map((x) => getWord(x));
   console.log(oppScores);
   // return ourTeam;
+
+  // comparison loop
+  let teamIsWinning = 0;
+  let oppIsWinning = 0;
+
+  teamScores.forEach((score, i) => {
+    if (score > oppScores[i]) {
+      teamIsWinning += 1;
+    } else if (score < oppScores[i]) {
+      oppIsWinning += 1;
+    }
+  });
+
+  if (teamIsWinning > oppIsWinning) {
+    return 'We win';
+  } else if (teamIsWinning < oppIsWinning) {
+    return 'We lose';
+  } else {
+    return 'Draw';
+  }
+
+  // console.log(teamIsWinning, oppIsWinning)
 }
