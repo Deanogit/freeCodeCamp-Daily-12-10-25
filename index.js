@@ -15,15 +15,21 @@ function battle(ourTeam, opponent) {
   console.log(ourTeam, opponent);
 
   // define ref string
-  const refString = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const refString = 'abcdefghijklmnopqrstuvwxyz';
 
   console.log(refString.length);
 
   // define helper function to count words
   function getWord(word) {
     let counter = 0;
-    word.forEach((letter) => {
-      counter += refString.indexOf(letter);
+    const wordArr = word.split('');
+    wordArr.forEach((letter) => {
+      // If the letter is uppercase, calculate its 1-26 value and then multiply by 2.
+      if (letter === letter.toUpperCase()) {
+        counter += (refString.indexOf(letter.toLowerCase()) + 1) * 2;
+      } else {
+        counter += refString.indexOf(letter) + 1;
+      }
     });
     return counter;
   }
